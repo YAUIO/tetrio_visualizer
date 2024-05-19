@@ -214,7 +214,81 @@ class Clears {
     int allclear;
 };
 
+class Garbage{
+public:
+    int sent;
+    int received;
+    int attack;
+    int cleared;
+};
+
+class Finesse{
+public:
+    int combo;
+    int faults;
+    int perfectpieces;
+};
+
+class Enemy{
+public:
+
+};
+
+class Target{
+public:
+
+};
+
+class BoardV{
+public:
+    std::vector<std::string> row;
+};
+
+class Hold{
+    std::string piece;
+    bool locked;
+};
+
+class Controlling{
+public:
+    int ldas;
+    int ldasiter;
+    bool lshift;
+    int rdas;
+    int rdasiter;
+    bool rshift;
+    int lastshift;
+    bool softdrop;
+};
+
+class Falling{
+public:
+    bool sleep;
+    bool deep_sleep;
+    bool hibernated;
+    int locking;
+    int lockresets;
+    bool forcelock;
+    bool floored;
+    bool clamped;
+    int safelock;
+    int x;
+    int y;
+    int r;
+    std::string type;
+    int highesty;
+    std::string last;
+    int lastkick;
+    std::string lastrotation;
+    int irs;
+    bool ihs;
+    int aox;
+    int aoy;
+    int keys;
+};
+
 class Stats {
+public:
     long seed;
     int lines;
     int level_lines;
@@ -232,16 +306,78 @@ class Stats {
     int currentbtbchainpower;
     int tspins;
     int piecesplaced;
+    Clears clears;
+    Garbage garbage;
+    int kills;
+    Finesse finesse;
+};
 
+class Int_Data{
+public:
+    int iid;
+    std::string type;
+    int amt;
+    int ackiid;
+    int x;
+    int y;
+    int size;
+    std::string username;
+};
+
+class igeData{
+public:
+    std::string type;
+    std::string gameid;
+    std::vector<Target> targets;
+    int frame;
+    bool value;
+    std::string key;
+    bool hoisted;
+    int subframe;
+
+    Int_Data data;
 };
 
 class tData {
 public:
+    int id;
+    int frame;
+    std::string type;
+    igeData data;
+    int cid;
+
     bool successful;
     std::string gameoverreason;
     Replay replay;
     Source source;
     Options options;
+    Stats stats;
+    int diyusi;
+    std::vector<Enemy> enemies;
+    std::vector<Target> targets;
+    int fire;
+    std::vector<BoardV> board;
+    std::vector<std::string> bag;
+    Hold hold;
+    double g;
+    Controlling controlling;
+    Falling falling;
+    Handling handling;
+    bool playing;
+};
+
+class Killer{
+public:
+    std::string gameid;
+    std::string name;
+    std::string type;
+};
+
+class Aggregatestats{
+public:
+    double apm;
+    double pps;
+    double vsscore;
 };
 
 class tEvent {
@@ -249,6 +385,8 @@ public:
     int frame;
     std::string type;
     tData data;
+    Killer killer;
+    Aggregatestats aggregatestats;
 };
 
 class Data {
@@ -269,4 +407,6 @@ public:
     std::string ts;
     bool verified;
     std::vector<Data> data;
+    std::string back;
+    std::string endleague;
 };
