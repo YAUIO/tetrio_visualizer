@@ -58,7 +58,7 @@ Points getPoints(nlohmann::json const &json) {
     auto points = Points(
             to_int(json["primary"]),
             to_double(json["secondary"]),
-            to_double(json["tertriary"]),
+            to_double(json["tertiary"]),
             getPointsExtra(json["extra"])
     );
     return points;
