@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-class Handling{
+class Handling {
     int arr;
     int das;
     int dcd;
@@ -13,24 +13,24 @@ class Handling{
     bool may20g;
 };
 
-class PointsExtra{
+class PointsExtra {
 public:
     std::string vs;
 };
 
-class AvgTracking{
+class AvgTracking {
     std::vector<double> arr;
     std::string extraName;
 };
 
-class Points{
+class Points {
     int primary;
     double secondary;
     double tertiary;
     PointsExtra extra;
 };
 
-class Player{
+class Player {
 public:
     std::string id;
     std::string username;
@@ -48,7 +48,7 @@ public:
     AvgTracking extraAvgTracking;
 };
 
-class Board{
+class Board {
 public:
     std::string id;
     std::string username;
@@ -56,22 +56,39 @@ public:
     bool success;
 };
 
-class Replay{
+class Replay {
 public:
 
 };
 
-class Source{
+class Source {
 public:
 
 };
 
-class Objective{
+class Objective {
 public:
     std::string type;
 };
 
-class Options{
+class Constants_overrides {
+public:
+
+};
+
+class Minoskin {
+public:
+    std::string z;
+    std::string l;
+    std::string o;
+    std::string s;
+    std::string i;
+    std::string j;
+    std::string t;
+    std::string other;
+};
+
+class Options {
 public:
     int version;
     bool seed_random;
@@ -136,29 +153,112 @@ public:
     bool allclears;
     bool clutch;
     bool nolockout;
+    std::string passthrough;
+    bool can_undo;
+    bool can_retry;
+    bool retryisclear;
+    bool noextrawidth;
+    bool stride;
+    int boardwidth;
+    int boardheight;
+    bool new_payback;
+    int messiness_change;
+    int messiness_inner;
+    bool messiness_nosame;
+    int messiness_timeout;
+    bool usebombs;
+    std::string song;
+    std::string latencypreference;
+    Handling handling;
+    int fulloffset;
+    int fullinterval;
+    std::string gameid;
+    std::string username;
+    Constants_overrides constantsoverrides;
+    bool gravitymax20g;
+    bool garbageattackcap;
+    bool nosound;
+    bool shielded;
+    int boardbuffer;
+    int survival_cap;
+    int survival_timer_itv;
+    int survival_layer_min;
+    Minoskin minoskin;
+    std::string ghostskin;
+    std::string boardskin;
+};
+
+class Time {
+    int start;
+    bool zero;
+    bool locked;
+    int prev;
+    int framoffset;
+};
+
+class Clears {
+    int singles;
+    int doubles;
+    int triples;
+    int quads;
+    int pentas;
+    int realtspins;
+    int minitspins;
+    int minitspinsingles;
+    int tspinsingles;
+    int minitspindoubles;
+    int tspindoubles;
+    int tspintriples;
+    int tspinquads;
+    int tspinpentas;
+    int allclear;
+};
+
+class Stats {
+    long seed;
+    int lines;
+    int level_lines;
+    int level_lines_needed;
+    int inputs;
+    int holds;
+    Time time;
+    int score;
+    int zenlevel;
+    int zenprogress;
+    int level;
+    int combo;
+    int btb;
+    int topbtb;
+    int currentbtbchainpower;
+    int tspins;
+    int piecesplaced;
 
 };
 
-class tData{
+class tData {
 public:
     bool successful;
     std::string gameoverreason;
+    Replay replay;
+    Source source;
+    Options options;
 };
 
-class tEvent{
+class tEvent {
 public:
     int frame;
     std::string type;
-
+    tData data;
 };
 
-class Data{
+class Data {
 public:
     std::vector<Board> board;
+    int frames;
     std::vector<tEvent> events;
 };
 
-class Ttr{
+class Ttr {
 public:
     std::string _id;
     std::vector<Player> endcontext;
@@ -167,5 +267,6 @@ public:
     long mt;
     std::string shortid;
     std::string ts;
+    bool verified;
     std::vector<Data> data;
 };
