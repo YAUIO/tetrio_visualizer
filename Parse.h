@@ -7,6 +7,7 @@
 #include <iostream>
 
 class Handling {
+public:
     int arr;
     int das;
     int dcd;
@@ -22,11 +23,13 @@ public:
 };
 
 class AvgTracking {
+public:
     std::vector<double> arr;
     std::string extraName;
 };
 
 class Points {
+public:
     int primary;
     double secondary;
     double tertiary;
@@ -192,6 +195,7 @@ public:
 };
 
 class Time {
+public:
     int start;
     bool zero;
     bool locked;
@@ -200,6 +204,7 @@ class Time {
 };
 
 class Clears {
+public:
     int singles;
     int doubles;
     int triples;
@@ -248,6 +253,7 @@ public:
 };
 
 class Hold{
+public:
     std::string piece;
     bool locked;
 };
