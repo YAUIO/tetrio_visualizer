@@ -487,10 +487,12 @@ std::vector<Board> getBoard(nlohmann::json const &fulljson) {
     int i = 0;
     while (i < fulljson.size()) {
         json = fulljson[i];
-        board.push_back(Board(to_string(json["id"]),
-                              to_string(json["username"]),
-                              to_bool(json["active"]),
-                              to_bool(json["success"])));
+        board.push_back(
+                Board(to_string(json["id"]),
+                to_string(json["username"]),
+                to_bool(json["active"]),
+                to_bool(json["success"]))
+                );
         i++;
     }
     return board;
@@ -511,20 +513,22 @@ std::vector<Player> getEndcontext(nlohmann::json const &fulljson) {
 
     while (i < fulljson.size()) {
         json = fulljson[i];
-        endcontext.push_back(Player(to_string(json["id"]),
-                                    to_string(json["username"]),
-                                    getHandling(json["handling"]),
-                                    to_bool(json["active"]),
-                                    to_bool(json["success"]),
-                                    to_int(json["inputs"]),
-                                    to_int(json["pieceplaced"]),
-                                    to_int(json["naturalorder"]),
-                                    to_int(json["score"]),
-                                    to_int(json["wins"]),
-                                    getPoints(json["points"]),
-                                    getAvgTracking(json["secondaryAvgTracking"]),
-                                    getAvgTracking(json["tertiaryAvgTracking"]),
-                                    getAvgTracking(json["extraAvgTracking"])));
+        endcontext.push_back(
+                Player(to_string(json["id"]),
+                to_string(json["username"]),
+                getHandling(json["handling"]),
+                to_bool(json["active"]),
+                to_bool(json["success"]),
+                to_int(json["inputs"]),
+                to_int(json["pieceplaced"]),
+                to_int(json["naturalorder"]),
+                to_int(json["score"]),
+                to_int(json["wins"]),
+                getPoints(json["points"]),
+                getAvgTracking(json["secondaryAvgTracking"]),
+                getAvgTracking(json["tertiaryAvgTracking"]),
+                getAvgTracking(json["extraAvgTracking"]))
+                );
         i++;
     }
 
@@ -537,11 +541,13 @@ std::vector<tEvent> getEvents(nlohmann::json const &fulljson) {
     int i = 0;
     while (i < fulljson.size()) {
         json = fulljson[i];
-        events.push_back(tEvent(to_int(json["frame"]),
-                                to_string(json["type"]),
-                                gettData(json["data"]),
-                                getKiller(json["killer"]),
-                                getAggregatestats(json["aggregatestats"])));
+        events.push_back(
+                tEvent(to_int(json["frame"]),
+                to_string(json["type"]),
+                gettData(json["data"]),
+                getKiller(json["killer"]),
+                getAggregatestats(json["aggregatestats"]))
+                );
         i++;
     }
     return events;
@@ -553,9 +559,11 @@ std::vector<Data> getData(nlohmann::json const &fulljson) {
     int i = 0;
     while (i < fulljson.size()) {
         json = fulljson[i];
-        data.push_back(Data(getBoard(json["board"]),
-                            to_int(json["frames"]),
-                            getEvents(json["events"])));
+        data.push_back(
+                Data(getBoard(json["board"]),
+                to_int(json["frames"]),
+                getEvents(json["events"]))
+                );
         i++;
     }
     return data;
