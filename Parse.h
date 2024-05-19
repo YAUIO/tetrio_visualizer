@@ -2,6 +2,16 @@
 
 #include <string>
 #include <vector>
+#include "nlohmann/json.hpp"
+#include <fstream>
+#include <iostream>
+
+
+bool to_bool(nlohmann::json const& json);
+
+long to_long(nlohmann::json const& json);
+
+int to_int(nlohmann::json const& json);
 
 class Handling {
     int arr;
@@ -39,7 +49,7 @@ public:
     bool success;
     int inputs;
     int pieceplaced;
-    int nauralorder;
+    int naturalorder;
     int score;
     int wins;
     Points points;
@@ -408,5 +418,21 @@ public:
     bool verified;
     std::vector<Data> data;
     std::string back;
-    std::string endleague;
+    std::string forcestyle;
 };
+
+std::vector<Player> getEndcontext(nlohmann::json const& fulljson);
+
+std::vector<Data> getData(nlohmann::json const& fulljson);
+
+Handling getHandling(nlohmann::json const& json);
+
+Points getPoints(nlohmann::json const& json);
+
+AvgTracking getAvgTracking(nlohmann::json const& json);
+
+Board getBoard(nlohmann::json const& json);
+
+nlohmann::json parseJson(std::string const& path);
+
+Ttr parseTtr(std::string const& path);

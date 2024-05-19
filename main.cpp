@@ -1,6 +1,10 @@
 #include <iostream>
+#include "Parse.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    auto ttr = parseTtr("/home/yudek/CLionProjects/TETR.IO_Visulizer/test.ttrm");
+
+    std::cout << ttr.forcestyle;
+
     return 0;
 }
