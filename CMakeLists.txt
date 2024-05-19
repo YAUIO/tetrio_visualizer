@@ -3,4 +3,6 @@ project(TETR_IO_Visulizer)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(TETR_IO_Visulizer main.cpp)
+add_executable(TETR_IO_Visulizer main.cpp
+        Parse.cpp
+        Parse.h)
