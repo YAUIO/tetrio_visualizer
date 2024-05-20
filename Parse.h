@@ -54,7 +54,7 @@ public:
     Points points;
     AvgTracking secondaryAvgTracking;
     AvgTracking tertiaryAvgTracking;
-    AvgTracking extraAvgTracking;
+    ExtraAvgTracking extraAvgTracking;
 };
 
 class Board {

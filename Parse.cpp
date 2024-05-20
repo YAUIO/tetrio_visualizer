@@ -18,6 +18,15 @@ long to_long(nlohmann::json const &json) {
     }
 }
 
+long long to_longlong(nlohmann::json const &json) {
+    std::string jsonstr = to_string(json);
+    try {
+        return std::stoll(jsonstr);
+    } catch (std::invalid_argument &e) {
+        return 0;
+    }
+}
+
 int to_int(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     try {
@@ -94,14 +103,14 @@ AvgTracking getTertiaryAvgTracking(nlohmann::json const &json) {
     }
 }
 
-AvgTracking getExtraAvgTracking(nlohmann::json const &json) {
+ExtraAvgTracking getExtraAvgTracking(nlohmann::json const &json) {
     nlohmann::json ison;
     try {
         ison = json["ExtraAvgTracking"];
-        auto avgtracking = AvgTracking(getArr(json["aggregatestats___vsscore"])); //fix this bs pls
+        auto avgtracking = ExtraAvgTracking(getArr(json["aggregatestats___vsscore"])); //fix this bs pls
         return avgtracking;
     } catch (nlohmann::json::exception &e) {
-        return AvgTracking();
+        return ExtraAvgTracking();
     }
 }
 
@@ -608,7 +617,7 @@ Ttr parseTtr(std::string const &path) {
     ttr.endcontext = getEndcontext(json["endcontext"]);
     ttr.gametype = to_string(json["gametype"]);
     ttr.ismulti = to_bool(json["isMulti"]);
-    ttr.mt = to_long(json["mt"]);
+    ttr.mt = to_longlong(json["mt"]);
     ttr.shortid = to_string(json["shortid"]);
     ttr.ts = to_string(json["ts"]);
     ttr.verified = to_bool(json["verified"]);
