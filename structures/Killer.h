@@ -6,15 +6,26 @@
 #include "../imports/json.hpp"
 #include <fstream>
 #include <iostream>
+#include "../Utils.cpp"
+
 #ifndef TETR_IO_VISULIZER_KILLER_H
 #define TETR_IO_VISULIZER_KILLER_H
 
 
-class Killer{
+class Killer {
 public:
     std::string gameid;
     std::string name;
     std::string type;
+
+    Killer getKiller(nlohmann::json const &json) {
+        auto killer = Killer(
+                to_string(json["gameid"]),
+                to_string(json["name"]),
+                to_string(json["type"])
+        );
+        return killer;
+    }
 };
 
 #endif //TETR_IO_VISULIZER_KILLER_H

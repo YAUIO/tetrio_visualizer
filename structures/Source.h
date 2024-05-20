@@ -12,6 +12,10 @@
 class Source {
 public:
 
+    Source getSource(nlohmann::json const &json) {
+        auto source = Source(); //0 fields
+        return source;
+    }
 };
 
 #endif //TETR_IO_VISULIZER_SOURCE_H

@@ -6,6 +6,7 @@
 #include "../imports/json.hpp"
 #include <fstream>
 #include <iostream>
+#include "../Utils.cpp"
 #ifndef TETR_IO_VISULIZER_AVGTRACKING_H
 #define TETR_IO_VISULIZER_AVGTRACKING_H
 

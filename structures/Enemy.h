@@ -12,6 +12,17 @@
 class Enemy{
 public:
 
+    std::vector<Enemy> getEnemy(nlohmann::json const &fulljson) {
+        auto enemy = std::vector<Enemy>();
+        nlohmann::json json;
+        int i = 0;
+        while (i < fulljson.size()) {
+            json = fulljson[i];
+            enemy.push_back(Enemy());
+            i++;
+        }
+        return enemy;
+    }
 };
 
 #endif //TETR_IO_VISULIZER_ENEMY_H

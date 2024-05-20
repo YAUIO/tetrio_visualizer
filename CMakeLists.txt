@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 include_directories(include/)
 
 add_executable(TETR_IO_Visulizer main.cpp
-        Parse.cpp
+        Utils.cpp
         Parse.h
         structures/Ttr.cpp
         structures/Ttr.h

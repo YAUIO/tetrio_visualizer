@@ -12,6 +12,10 @@
 class Replay {
 public:
 
+    Replay getReplay(nlohmann::json const &json) {
+        auto replay = Replay(); //0 fields
+        return replay;
+    }
 };
 
 #endif //TETR_IO_VISULIZER_REPLAY_H

@@ -46,6 +46,36 @@ public:
     Falling falling;
     Handling handling;
     bool playing;
+
+    tData gettData(nlohmann::json const &json) {
+        auto tdata = tData(
+                to_int(json["id"]),
+                to_int(json["frame"]),
+                to_string(json["type"]),
+                IgeData().getIgeData(json["data"]),
+                to_int(json["cid"]),
+                to_bool(json["successful"]),
+                to_string(json["gameoverreason"]),
+                Replay().getReplay(json["replay"]),
+                Source().getSource(json["source"]),
+                Options().getOptions(json["options"]),
+                getStats(json["stats"]),
+                to_int(json["diyusi"]),
+                getEnemy(json["enemies"]),
+                getTarget(json["targets"]),
+                to_int(json["fire"]),
+                getBoardV(json["board"]),
+                getBag(json["bag"]),
+                Hold().getHold(json["hold"]),
+                to_double(json["g"]),
+                Controlling().getControlling(json["controlling"]),
+                Falling().getFalling(json["falling"]),
+                Handling().getHandling(json["handling"]),
+                to_bool(json["playing"])
+        );
+
+        return tdata;
+    }
 };
 
 

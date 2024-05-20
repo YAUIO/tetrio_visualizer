@@ -8,8 +8,10 @@
 #include "Handling.h"
 #include "../Parse.h"
 #include "Minoskin.h"
+#include "ConstantsOverrides.h"
 #include <fstream>
 #include <iostream>
+
 #ifndef TETR_IO_VISULIZER_OPTIONS_H
 #define TETR_IO_VISULIZER_OPTIONS_H
 
@@ -112,6 +114,109 @@ public:
     Minoskin minoskin;
     std::string ghostskin;
     std::string boardskin;
+
+    Options getOptions(nlohmann::json const &json) {
+        auto options = Options(
+                to_int(json["version"]),
+                to_bool(json["seed_random"]),
+                to_double(json["g"]),
+                to_bool(json["countdown"]),
+                to_int(json["countdown_count"]),
+                to_int(json["countdown_interval"]),
+                to_int(json["precountdown"]),
+                to_int(json["prestart"]),
+                to_string(json["mission"]),
+                to_string(json["mission_type"]),
+                to_string(json["zoominto"]),
+                to_string(json["slot_counter1"]),
+                to_string(json["slot_counter2"]),
+                to_string(json["slot_counter3"]),
+                to_string(json["slot_counter5"]),
+                to_string(json["slot_bar1"]),
+                to_bool(json["display_fire"]),
+                to_bool(json["display_username"]),
+                to_bool(json["hasgarbage"]),
+                to_bool(json["bgmnoreset"]),
+                to_bool(json["neverstopbgm"]),
+                to_bool(json["display_next"]),
+                to_bool(json["display_hold"]),
+                to_bool(json["infinite_hold"]),
+                to_int(json["gmargin"]),
+                to_double(json["gincrease"]),
+                to_int(json["garbagecap"]),
+                to_int(json["garbagecapincrease"]),
+                to_int(json["garbagecapmax"]),
+                to_bool(json["garbageabsolutecap"]),
+                to_int(json["garbageholesize"]),
+                to_bool(json["garbagephase"]),
+                to_bool(json["garbagequeue"]),
+                to_int(json["garbageare"]),
+                to_string(json["garbageentry"]),
+                to_string(json["garbageblocking"]),
+                to_string(json["garbagetargetbonus"]),
+                to_string(json["presets"]),
+                to_string(json["bagtype"]),
+                to_string(json["spinbonuses"]),
+                to_string(json["combotable"]),
+                to_string(json["kickset"]),
+                to_int(json["nextcount"]),
+                to_bool(json["allow_harddrop"]),
+                to_bool(json["display_shadow"]),
+                to_int(json["locktime"]),
+                to_int(json["garbagespeed"]),
+                to_int(json["forfeit_time"]),
+                to_int(json["are"]),
+                to_int(json["lineclear_are"]),
+                to_bool(json["infinitemovement"]),
+                to_int(json["lockresets"]),
+                to_bool(json["allow180"]),
+                Objective().getObjective(json["objective"]),
+                to_bool(json["room_handling"]),
+                to_int(json["room_handling_arr"]),
+                to_int(json["room_handling_das"]),
+                to_int(json["room_handling_sdf"]),
+                to_bool(json["manual_allowed"]),
+                to_bool(json["b2bchaining"]),
+                to_bool(json["allclears"]),
+                to_bool(json["clutch"]),
+                to_bool(json["nolockout"]),
+                to_string(json["passthrough"]),
+                to_bool(json["can_undo"]),
+                to_bool(json["can_retry"]),
+                to_bool(json["retryisclear"]),
+                to_bool(json["noextrawidth"]),
+                to_bool(json["stride"]),
+                to_int(json["boardwidth"]),
+                to_int(json["boardheight"]),
+                to_bool(json["new_payback"]),
+                to_int(json["messiness_change"]),
+                to_int(json["messiness_inner"]),
+                to_bool(json["messiness_nosame"]),
+                to_int(json["messiness_timeout"]),
+                to_bool(json["usebombs"]),
+                to_string(json["song"]),
+                to_string(json["latencypreference"]),
+                Handling().getHandling(json["handling"]),
+                to_int(json["fulloffset"]),
+                to_int(json["fullinterval"]),
+                to_string(json["gameid"]),
+                to_string(json["username"]),
+                Constants_overrides().getConstants_overrides(json["constantsoverrides"]),
+                to_bool(json["gravitymax20g"]),
+                to_bool(json["garbageattackcap"]),
+                to_bool(json["nosound"]),
+                to_bool(json["shielded"]),
+                to_int(json["boardbuffer"]),
+                to_int(json["survival_cap"]),
+                to_int(json["survival_timer_itv"]),
+                to_int(json["survival_layer_min"]),
+                Minoskin().getMinoskin(json["minoskin"]),
+                to_string(json["ghostskin"]),
+                to_string(json["boardskin"])
+        );
+
+        return options;
+    }
 };
 
 

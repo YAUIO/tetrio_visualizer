@@ -13,6 +13,33 @@
 class BoardV{
 public:
     std::vector<std::string> row;
+
+
+    std::vector<std::string> getRow(nlohmann::json const &json) {
+
+        auto row = std::vector<std::string>();
+        nlohmann::json ison;
+        int i = 0;
+        while (i < json.size()) {
+            ison = json[i];
+            row.push_back(to_string(ison));
+            i++;
+        }
+        return row;
+
+    }
+    std::vector<BoardV> getBoardV(nlohmann::json const &fulljson) {
+        auto boardV = std::vector<BoardV>();
+        nlohmann::json json;
+        int i = 0;
+        while (i < fulljson.size()) {
+            json = fulljson[i];
+            boardV.push_back(BoardV(getRow(json)));
+            i++;
+        }
+        return boardV;
+    }
+
 };
 
 
