@@ -8,7 +8,7 @@
 #include "../imports/json.hpp"
 #include <fstream>
 #include <iostream>
-#include "../Utils.cpp"
+#include "../Utils.h"
 #ifndef TETR_IO_VISULIZER_POINTS_H
 #define TETR_IO_VISULIZER_POINTS_H
 
@@ -24,7 +24,7 @@ public:
                 to_int(json["primary"]),
                 to_double(json["secondary"]),
                 to_double(json["tertiary"]),
-                PointsExtra().getPointsExtra(json['extra'])
+                PointsExtra::getPointsExtra(json["extra"])
         );
         return points;
     }

@@ -9,7 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include "IntData.h"
-#include "../Utils.cpp"
+#include "../Utils.h"
 
 #ifndef TETR_IO_VISULIZER_IGEDATA_H
 #define TETR_IO_VISULIZER_IGEDATA_H

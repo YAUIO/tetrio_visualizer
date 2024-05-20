@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "../imports/json.hpp"
+#include "../Utils.h"
 #include <fstream>
 #include <iostream>
 #ifndef TETR_IO_VISULIZER_EXTRAAVGTRACKING_H
@@ -13,6 +14,15 @@
 class ExtraAvgTracking {
 public:
     std::vector<double> aggregatestats___vsscore;
+
+    static ExtraAvgTracking getExtraAvgTracking(nlohmann::json const &json) {
+        try {
+            auto avgtracking = ExtraAvgTracking(getArr(json["aggregatestats___vsscore"]));
+            return avgtracking;
+        } catch (nlohmann::json::exception &e) {
+            return ExtraAvgTracking();
+        }
+    }
 };
 
 #endif //TETR_IO_VISULIZER_EXTRAAVGTRACKING_H

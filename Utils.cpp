@@ -1,6 +1,6 @@
-#include "Parse.h"
-#include "imports/json.hpp"
-bool to_bool(nlohmann::json const &json) {
+#include "Utils.h"
+
+inline bool to_bool(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     if (jsonstr == "true") {
         return true;
@@ -9,7 +9,7 @@ bool to_bool(nlohmann::json const &json) {
     }
 }
 
-long to_long(nlohmann::json const &json) {
+inline long to_long(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     try {
         return std::stol(jsonstr);
@@ -18,7 +18,7 @@ long to_long(nlohmann::json const &json) {
     }
 }
 
-long long to_longlong(nlohmann::json const &json) {
+inline long long to_longlong(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     try {
         return std::stoll(jsonstr);
@@ -27,7 +27,7 @@ long long to_longlong(nlohmann::json const &json) {
     }
 }
 
-int to_int(nlohmann::json const &json) {
+inline int to_int(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     try {
         return std::stoi(jsonstr);
@@ -36,7 +36,7 @@ int to_int(nlohmann::json const &json) {
     }
 }
 
-double to_double(nlohmann::json const &json) {
+inline double to_double(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     try {
         return std::stod(jsonstr);
@@ -45,7 +45,7 @@ double to_double(nlohmann::json const &json) {
     }
 }
 
-std::vector<double> getArr(nlohmann::json const &fulljson) {
+inline std::vector<double> getArr(nlohmann::json const &fulljson) {
     auto arr = std::vector<double>();
     nlohmann::json json;
     int i = 0;
@@ -57,36 +57,7 @@ std::vector<double> getArr(nlohmann::json const &fulljson) {
     return arr;
 }
 
-AvgTracking getSecondaryAvgTracking(nlohmann::json const &json) {
-    try {
-        auto avgtracking = AvgTracking(getArr(json["secondaryAvgTracking"]));
-        return avgtracking;
-    } catch (nlohmann::json::exception &e) {
-        return AvgTracking();
-    }
-}
-
-AvgTracking getTertiaryAvgTracking(nlohmann::json const &json) {
-    try {
-        auto avgtracking = AvgTracking(getArr(json["tertiaryAvgTracking"]));
-        return avgtracking;
-    } catch (nlohmann::json::exception &e) {
-        return AvgTracking();
-    }
-}
-
-ExtraAvgTracking getExtraAvgTracking(nlohmann::json const &json) {
-    nlohmann::json ison;
-    try {
-        ison = json["ExtraAvgTracking"];
-        auto avgtracking = ExtraAvgTracking(getArr(json["aggregatestats___vsscore"])); //fix this bs pls
-        return avgtracking;
-    } catch (nlohmann::json::exception &e) {
-        return ExtraAvgTracking();
-    }
-}
-
-std::vector<std::string> getBag(nlohmann::json const &fulljson) {
+inline std::vector<std::string> getBag(nlohmann::json const &fulljson) {
     auto bag = std::vector<std::string>();
     nlohmann::json json;
     int i = 0;
@@ -98,7 +69,7 @@ std::vector<std::string> getBag(nlohmann::json const &fulljson) {
     return bag;
 }
 
-nlohmann::json parseJson(std::string const &path) {
+inline nlohmann::json parseJson(std::string const &path) {
     std::ifstream file(path);
 
     nlohmann::json json = nlohmann::json::parse(file);

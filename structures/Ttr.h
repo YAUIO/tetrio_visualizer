@@ -27,7 +27,7 @@ public:
     std::string back;
     std::string forcestyle;
 
-    Ttr parseTtr(std::string const &path) {
+    static Ttr parseTtr(std::string const &path) {
         auto json = parseJson(path);
         auto ttr = Ttr();
 

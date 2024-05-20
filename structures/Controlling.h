@@ -6,7 +6,7 @@
 #include <vector>
 #include "../imports/json.hpp"
 #include <fstream>
-#include "../Utils.cpp"
+#include "../Utils.h"
 #include <iostream>
 
 #ifndef TETR_IO_VISULIZER_CONTROLLING_H

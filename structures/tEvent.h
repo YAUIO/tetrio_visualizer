@@ -7,7 +7,7 @@
 #include "tData.h"
 #include "Killer.h"
 #include "Aggregatestats.h"
-#include "../Utils.cpp"
+#include "../Utils.h"
 #include "../imports/json.hpp"
 #include <fstream>
 #include <iostream>

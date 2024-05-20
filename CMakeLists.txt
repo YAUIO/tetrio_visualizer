@@ -44,4 +44,5 @@ add_executable(TETR_IO_Visulizer main.cpp
         structures/Target.h
         structures/BoardV.h
         structures/ConstantsOverrides.h
+        Utils.h
 )

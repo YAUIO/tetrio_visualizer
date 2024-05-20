@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include "../imports/json.hpp"
-#include "../Utils.cpp"
+#include "../Utils.h"
 #include <fstream>
 #include <iostream>
 #ifndef TETR_IO_VISULIZER_TIME_H

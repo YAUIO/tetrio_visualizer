@@ -11,7 +11,7 @@
 #include "ExtraAvgTracking.h"
 #include <fstream>
 #include <iostream>
-#include "../Utils.cpp"
+#include "../Utils.h"
 
 #ifndef TETR_IO_VISULIZER_PLAYER_H
 #define TETR_IO_VISULIZER_PLAYER_H
@@ -52,10 +52,10 @@ public:
                            to_int(json["naturalorder"]),
                            to_int(json["score"]),
                            to_int(json["wins"]),
-                           Points().getPoints(json["points"]),
-                           getSecondaryAvgTracking(json["secondaryAvgTracking"]),
-                           getTertiaryAvgTracking(json["tertiaryAvgTracking"]),
-                           getExtraAvgTracking(json["extraAvgTracking"])));
+                           Points::getPoints(json["points"]),
+                           AvgTracking::getSecondaryAvgTracking(json["secondaryAvgTracking"]),
+                           AvgTracking::getTertiaryAvgTracking(json["tertiaryAvgTracking"]),
+                           ExtraAvgTracking::getExtraAvgTracking(json["extraAvgTracking"])));
 
             i++;
         }

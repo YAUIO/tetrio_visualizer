@@ -16,7 +16,7 @@ public:
     std::vector<std::string> row;
 
 
-    std::vector<std::string> getRow(nlohmann::json const &json) {
+    static std::vector<std::string> getRow(nlohmann::json const &json) {
 
         auto row = std::vector<std::string>();
         nlohmann::json ison;
@@ -29,7 +29,7 @@ public:
         return row;
 
     }
-    std::vector<BoardV> getBoardV(nlohmann::json const &fulljson) {
+    static std::vector<BoardV> getBoardV(nlohmann::json const &fulljson) {
         auto boardV = std::vector<BoardV>();
         nlohmann::json json;
         int i = 0;

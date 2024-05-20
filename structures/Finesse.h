@@ -7,7 +7,7 @@
 #include "../imports/json.hpp"
 #include <fstream>
 #include <iostream>
-#include "../Utils.cpp"
+#include "../Utils.h"
 
 #ifndef TETR_IO_VISULIZER_FINESSE_H
 #define TETR_IO_VISULIZER_FINESSE_H
