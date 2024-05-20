@@ -5,27 +5,22 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include/)
 
+include_directories(imports/)
+
+include_directories(structures/)
+
 add_executable(TETR_IO_Visulizer main.cpp
         Utils.cpp
         Parse.h
-        structures/Ttr.cpp
         structures/Ttr.h
-        structures/Player.cpp
         structures/Player.h
         structures/Board.h
-        structures/Handling.cpp
         structures/Handling.h
-        structures/Minoskin.cpp
         structures/Minoskin.h
-        structures/Options.cpp
         structures/Options.h
-        structures/Clears.cpp
         structures/Clears.h
-        structures/Falling.cpp
         structures/Falling.h
-        structures/Stats.cpp
         structures/Stats.h
-        structures/tData.cpp
         structures/tData.h
         structures/IntData.h
         structures/IgeData.h

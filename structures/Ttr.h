@@ -1,6 +1,7 @@
 //
 // Created by shira on 5/20/2024.
 //
+#pragma once
 #include <string>
 #include <vector>
 #include "../imports/json.hpp"
