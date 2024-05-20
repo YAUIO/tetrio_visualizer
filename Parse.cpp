@@ -1,5 +1,5 @@
 #include "Parse.h"
-
+#include "imports/json.hpp"
 bool to_bool(nlohmann::json const &json) {
     std::string jsonstr = to_string(json);
     if (jsonstr == "true") {
@@ -97,9 +97,8 @@ AvgTracking getTertiaryAvgTracking(nlohmann::json const &json) {
 AvgTracking getExtraAvgTracking(nlohmann::json const &json) {
     nlohmann::json ison;
     try {
-        ison = json["extraAvgTracking"];
-        auto avgtracking = AvgTracking(getArr(json["aggregatestats___vsscore"]),
-                                       "aggregatestats___vsscore"); //fix this bs pls
+        ison = json["ExtraAvgTracking"];
+        auto avgtracking = AvgTracking(getArr(json["aggregatestats___vsscore"])); //fix this bs pls
         return avgtracking;
     } catch (nlohmann::json::exception &e) {
         return AvgTracking();

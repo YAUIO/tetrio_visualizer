@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "nlohmann/json.hpp"
+#include "imports/json.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -25,7 +25,10 @@ public:
 class AvgTracking {
 public:
     std::vector<double> arr;
-    std::string extraName;
+};
+class ExtraAvgTracking {
+public:
+    std::vector<double> aggregatestats___vsscore;
 };
 
 class Points {
