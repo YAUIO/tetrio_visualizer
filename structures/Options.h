@@ -1,0 +1,118 @@
+//
+// Created by shira on 5/20/2024.
+//
+#include <string>
+#include <vector>
+#include "../imports/json.hpp"
+#include "Objective.h"
+#include "Handling.h"
+#include "../Parse.h"
+#include "Minoskin.h"
+#include <fstream>
+#include <iostream>
+#ifndef TETR_IO_VISULIZER_OPTIONS_H
+#define TETR_IO_VISULIZER_OPTIONS_H
+
+
+class Options {
+public:
+    int version;
+    bool seed_random;
+    double g;
+    bool countdown;
+    int countdown_count;
+    int countdown_interval;
+    int precountdown;
+    int prestart;
+    std::string mission;
+    std::string mission_type;
+    std::string zoominto;
+    std::string slot_counter1;
+    std::string slot_counter2;
+    std::string slot_counter3;
+    std::string slot_counter5;
+    std::string slot_bar1;
+    bool display_fire;
+    bool display_username;
+    bool hasgarbage;
+    bool bgmnoreset;
+    bool neverstopbgm;
+    bool display_next;
+    bool display_hold;
+    bool infinite_hold;
+    int gmargin;
+    double gincrease;
+    int garbagecap;
+    int garbagecapincrease;
+    int garbagecapmax;
+    bool garbageabsolutecap;
+    int garbageholesize;
+    bool garbagephase;
+    bool garbagequeue;
+    int garbageare;
+    std::string garbageentry;
+    std::string garbageblocking;
+    std::string garbagetargetbonus;
+    std::string presets;
+    std::string bagtype;
+    std::string spinbonuses;
+    std::string combotable;
+    std::string kickset;
+    int nextcount;
+    bool allow_harddrop;
+    bool display_shadow;
+    int locktime;
+    int garbagespeed;
+    int forfeit_time;
+    int are;
+    int lineclear_are;
+    bool infinitemovement;
+    int lockresets;
+    bool allow180;
+    Objective objective;
+    bool room_handling;
+    int room_handling_arr;
+    int room_handling_das;
+    int room_handling_sdf;
+    bool manual_allowed;
+    bool b2bchaining;
+    bool allclears;
+    bool clutch;
+    bool nolockout;
+    std::string passthrough;
+    bool can_undo;
+    bool can_retry;
+    bool retryisclear;
+    bool noextrawidth;
+    bool stride;
+    int boardwidth;
+    int boardheight;
+    bool new_payback;
+    int messiness_change;
+    int messiness_inner;
+    bool messiness_nosame;
+    int messiness_timeout;
+    bool usebombs;
+    std::string song;
+    std::string latencypreference;
+    Handling handling;
+    int fulloffset;
+    int fullinterval;
+    std::string gameid;
+    std::string username;
+    Constants_overrides constantsoverrides;
+    bool gravitymax20g;
+    bool garbageattackcap;
+    bool nosound;
+    bool shielded;
+    int boardbuffer;
+    int survival_cap;
+    int survival_timer_itv;
+    int survival_layer_min;
+    Minoskin minoskin;
+    std::string ghostskin;
+    std::string boardskin;
+};
+
+
+#endif //TETR_IO_VISULIZER_OPTIONS_H

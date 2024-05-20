@@ -7,6 +7,6 @@ int main(int argc, char* argv[]) {
     }
     std::string path = argv[1];
     auto ttr = parseTtr(path);
-
+    std::ofstream a_file ( "example.txt" );
     return 0;
 }
