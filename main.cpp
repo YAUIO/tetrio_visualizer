@@ -9,6 +9,6 @@ int main(int argc, char* argv[]) {
     std::string path = argv[1];*/
     std::string path = "/home/yudek/CLionProjects/TETR.IO_Visulizer/test.ttrm";
     auto ttr = Ttr::parseTtr(path);
-    std::ofstream a_file ( "example.txt" );
+    std::cout << ttr.mt;
     return 0;
 }

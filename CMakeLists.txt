@@ -4,14 +4,12 @@ project(TETR_IO_Visulizer)
 set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include/)
-
 include_directories(imports/)
-
 include_directories(structures/)
+include_directories(render/)
 
 add_executable(TETR_IO_Visulizer main.cpp
         Utils.cpp
-        Parse.h
         structures/Ttr.h
         structures/Player.h
         structures/Board.h
@@ -45,4 +43,6 @@ add_executable(TETR_IO_Visulizer main.cpp
         structures/BoardV.h
         structures/ConstantsOverrides.h
         Utils.h
+        render/Render.cpp
+        render/Render.h
 )
