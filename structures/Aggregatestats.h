@@ -17,7 +17,7 @@ public:
     double pps;
     double vsscore;
 
-    Aggregatestats getAggregatestats(nlohmann::json const &json) {
+    static Aggregatestats getAggregatestats(nlohmann::json const &json) {
         auto aggregatestats = Aggregatestats(
                 to_double(json["apm"]),
                 to_double(json["ppm"]),

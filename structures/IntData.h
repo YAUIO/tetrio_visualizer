@@ -23,7 +23,7 @@ public:
     int size;
     std::string username;
 
-    IntData getIntData(nlohmann::json const &json) {
+    static IntData getIntData(nlohmann::json const &json) {
         auto intData = IntData(
                 to_int(json["iid"]),
                 to_string(json["type"]),

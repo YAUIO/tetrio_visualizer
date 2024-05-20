@@ -19,7 +19,7 @@ public:
     int attack;
     int cleared;
 
-    Garbage getGarbage(nlohmann::json const &json) {
+    static Garbage getGarbage(nlohmann::json const &json) {
         auto garbage = Garbage(
                 to_int(json["sent"]),
                 to_int(json["received"]),

@@ -31,7 +31,7 @@ public:
     int tspinpentas;
     int allclear;
 
-    Clears getClears(nlohmann::json const &json) {
+    static Clears getClears(nlohmann::json const &json) {
         auto clears = Clears(
                 to_int(json["singles"]),
                 to_int(json["doubles"]),

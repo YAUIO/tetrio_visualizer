@@ -32,14 +32,14 @@ public:
         auto ttr = Ttr();
 
         ttr._id = to_string(json["_id"]);
-        ttr.endcontext = getEndcontext(json["endcontext"]);
+        ttr.endcontext = Player::getEndcontext(json["endcontext"]);
         ttr.gametype = to_string(json["gametype"]);
         ttr.ismulti = to_bool(json["isMulti"]);
         ttr.mt = to_longlong(json["mt"]);
         ttr.shortid = to_string(json["shortid"]);
         ttr.ts = to_string(json["ts"]);
         ttr.verified = to_bool(json["verified"]);
-        ttr.data = getData(json["data"]);
+        ttr.data = Data::getData(json["data"]);
         ttr.back = to_string(json["back"]);
         ttr.forcestyle = to_string(json["forcestyle"]);
 

@@ -23,7 +23,7 @@ public:
     std::string t;
     std::string other;
 
-    Minoskin getMinoskin(nlohmann::json const &json) {
+    static Minoskin getMinoskin(nlohmann::json const &json) {
         auto minoskin = Minoskin(
                 to_string(json["z"]),
                 to_string(json["l"]),

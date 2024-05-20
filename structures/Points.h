@@ -19,7 +19,7 @@ public:
     double tertiary;
     PointsExtra extra;
 
-    Points getPoints(nlohmann::json const &json) {
+    static Points getPoints(nlohmann::json const &json) {
         auto points = Points(
                 to_int(json["primary"]),
                 to_double(json["secondary"]),

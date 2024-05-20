@@ -116,7 +116,7 @@ public:
     std::string ghostskin;
     std::string boardskin;
 
-    Options getOptions(nlohmann::json const &json) {
+    static Options getOptions(nlohmann::json const &json) {
         auto options = Options(
                 to_int(json["version"]),
                 to_bool(json["seed_random"]),
@@ -171,7 +171,7 @@ public:
                 to_bool(json["infinitemovement"]),
                 to_int(json["lockresets"]),
                 to_bool(json["allow180"]),
-                Objective().getObjective(json["objective"]),
+                Objective::getObjective(json["objective"]),
                 to_bool(json["room_handling"]),
                 to_int(json["room_handling_arr"]),
                 to_int(json["room_handling_das"]),
@@ -197,12 +197,12 @@ public:
                 to_bool(json["usebombs"]),
                 to_string(json["song"]),
                 to_string(json["latencypreference"]),
-                Handling().getHandling(json["handling"]),
+                Handling::getHandling(json["handling"]),
                 to_int(json["fulloffset"]),
                 to_int(json["fullinterval"]),
                 to_string(json["gameid"]),
                 to_string(json["username"]),
-                Constants_overrides().getConstants_overrides(json["constantsoverrides"]),
+                Constants_overrides::getConstants_overrides(json["constantsoverrides"]),
                 to_bool(json["gravitymax20g"]),
                 to_bool(json["garbageattackcap"]),
                 to_bool(json["nosound"]),
@@ -211,7 +211,7 @@ public:
                 to_int(json["survival_cap"]),
                 to_int(json["survival_timer_itv"]),
                 to_int(json["survival_layer_min"]),
-                Minoskin().getMinoskin(json["minoskin"]),
+                Minoskin::getMinoskin(json["minoskin"]),
                 to_string(json["ghostskin"]),
                 to_string(json["boardskin"])
         );

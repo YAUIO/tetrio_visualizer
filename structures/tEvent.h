@@ -32,9 +32,9 @@ public:
             events.push_back(
                     tEvent(to_int(json["frame"]),
                            to_string(json["type"]),
-                           tData().gettData(json["data"]),
-                           Killer().getKiller(json["killer"]),
-                           Aggregatestats().getAggregatestats(json["aggregatestats"]))
+                           tData::gettData(json["data"]),
+                           Killer::getKiller(json["killer"]),
+                           Aggregatestats::getAggregatestats(json["aggregatestats"]))
             );
             i++;
         }

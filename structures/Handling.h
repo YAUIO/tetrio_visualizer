@@ -22,7 +22,7 @@ public:
     bool cancel;
     bool may20g;
 
-    Handling getHandling(nlohmann::json const &json) {
+    static Handling getHandling(nlohmann::json const &json) {
         auto handling = Handling(
                 to_int(json["arr"]),
                 to_int(json["das"]),

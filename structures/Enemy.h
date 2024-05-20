@@ -13,7 +13,7 @@
 class Enemy{
 public:
 
-    std::vector<Enemy> getEnemy(nlohmann::json const &fulljson) {
+    static std::vector<Enemy> getEnemy(nlohmann::json const &fulljson) {
         auto enemy = std::vector<Enemy>();
         nlohmann::json json;
         int i = 0;

@@ -15,7 +15,7 @@
 class Constants_overrides {
 public:
 
-    Constants_overrides getConstants_overrides(nlohmann::json const &json) {
+    static Constants_overrides getConstants_overrides(nlohmann::json const &json) {
         auto constants_overrides = Constants_overrides();
         return constants_overrides;
     }

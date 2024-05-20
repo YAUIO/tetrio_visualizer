@@ -48,7 +48,7 @@ public:
     Handling handling;
     bool playing;
 
-    tData gettData(nlohmann::json const &json) {
+    static tData gettData(nlohmann::json const &json) {
         auto tdata = tData(
                 to_int(json["id"]),
                 to_int(json["frame"]),
@@ -65,9 +65,9 @@ public:
                 Enemy::getEnemy(json["enemies"]),
                 Target::getTarget(json["targets"]),
                 to_int(json["fire"]),
-                getBoardV(json["board"]),
+                BoardV::getBoardV(json["board"]),
                 getBag(json["bag"]),
-                Hold().getHold(json["hold"]),
+                Hold::getHold(json["hold"]),
                 to_double(json["g"]),
                 Controlling::getControlling(json["controlling"]),
                 Falling::getFalling(json["falling"]),

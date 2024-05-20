@@ -14,7 +14,7 @@
 class Target {
 public:
 
-    std::vector<Target> getTarget(nlohmann::json const &fulljson) {
+    static std::vector<Target> getTarget(nlohmann::json const &fulljson) {
         auto target = std::vector<Target>();
         nlohmann::json json;
         int i = 0;

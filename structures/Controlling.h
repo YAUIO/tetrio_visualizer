@@ -23,7 +23,7 @@ public:
     int lastshift;
     bool softdrop;
 
-    Controlling getControlling(nlohmann::json const &json) {
+    static Controlling getControlling(nlohmann::json const &json) {
         auto controlling = Controlling(
                 to_int(json["ldas"]),
                 to_int(json["ldasiter"]),

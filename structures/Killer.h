@@ -19,7 +19,7 @@ public:
     std::string name;
     std::string type;
 
-    Killer getKiller(nlohmann::json const &json) {
+    static Killer getKiller(nlohmann::json const &json) {
         auto killer = Killer(
                 to_string(json["gameid"]),
                 to_string(json["name"]),

@@ -20,7 +20,7 @@ public:
     int frames;
     std::vector<tEvent> events;
 
-    std::vector<Data> getData(nlohmann::json const &fulljson) {
+    static std::vector<Data> getData(nlohmann::json const &fulljson) {
         auto data = std::vector<Data>();
         nlohmann::json json;
         int i = 0;

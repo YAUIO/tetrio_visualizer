@@ -34,7 +34,7 @@ public:
     AvgTracking tertiaryAvgTracking;
     ExtraAvgTracking extraAvgTracking;
 
-    std::vector<Player> getEndcontext(nlohmann::json const &fulljson) {
+    static std::vector<Player> getEndcontext(nlohmann::json const &fulljson) {
         auto endcontext = std::vector<Player>();
         nlohmann::json json;
         int i = 0;

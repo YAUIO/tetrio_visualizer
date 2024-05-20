@@ -18,7 +18,7 @@ public:
     std::string piece;
     bool locked;
 
-    Hold getHold(nlohmann::json const &json) {
+    static Hold getHold(nlohmann::json const &json) {
         auto hold = Hold(
                 to_string(json["piece"]),
                 to_bool(json["locked"])

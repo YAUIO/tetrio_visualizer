@@ -18,7 +18,7 @@ public:
     int faults;
     int perfectpieces;
 
-    Finesse getFinesse(nlohmann::json const &json) {
+    static Finesse getFinesse(nlohmann::json const &json) {
         auto finesse = Finesse(
                 to_int(json["combo"]),
                 to_int(json["faults"]),

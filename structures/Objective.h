@@ -15,7 +15,7 @@ class Objective {
 public:
     std::string type;
 
-    Objective getObjective(nlohmann::json const &json) {
+    static Objective getObjective(nlohmann::json const &json) {
         auto objective = Objective(to_string(json["type"]));
         return objective;
     }

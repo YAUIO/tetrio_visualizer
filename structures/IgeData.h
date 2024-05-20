@@ -31,13 +31,13 @@ public:
         auto igedata = IgeData(
                 to_string(json["type"]),
                 to_string(json["gameid"]),
-                getTarget(json["targets"]),
+                Target::getTarget(json["targets"]),
                 to_int(json["frame"]),
                 to_bool(json["value"]),
                 to_string(json["key"]),
                 to_bool(json["hoisted"]),
                 to_int(json["subframe"]),
-                getIntData(json["data"])
+                IntData::getIntData(json["data"])
         );
         return igedata;
     }

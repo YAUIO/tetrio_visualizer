@@ -39,7 +39,7 @@ public:
     int kills;
     Finesse finesse;
 
-    Stats getStats(nlohmann::json const &json) {
+    static Stats getStats(nlohmann::json const &json) {
         auto stats = Stats(
                 to_long(json["seed"]),
                 to_int(json["lines"]),
@@ -47,7 +47,7 @@ public:
                 to_int(json["level_lines_needed"]),
                 to_int(json["inputs"]),
                 to_int(json["holds"]),
-                Time().getTime(json["time"]),
+                Time::getTime(json["time"]),
                 to_int(json["score"]),
                 to_int(json["zenlevel"]),
                 to_int(json["zenprogress"]),
@@ -58,10 +58,10 @@ public:
                 to_int(json["currentbtbchainpower"]),
                 to_int(json["tspins"]),
                 to_int(json["piecesplaced"]),
-                Clears().getClears(json["clears"]),
-                Garbage().getGarbage(json["garbage"]),
+                Clears::getClears(json["clears"]),
+                Garbage::getGarbage(json["garbage"]),
                 to_int(json["kills"]),
-                Finesse().getFinesse(json["finesse"])
+                Finesse::getFinesse(json["finesse"])
         );
         return stats;
     }

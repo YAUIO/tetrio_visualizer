@@ -19,7 +19,7 @@ public:
     int prev;
     int framoffset;
 
-    Time getTime(nlohmann::json const &json) {
+    static Time getTime(nlohmann::json const &json) {
         auto time = Time(
                 to_int(json["start"]),
                 to_bool(json["zero"]),

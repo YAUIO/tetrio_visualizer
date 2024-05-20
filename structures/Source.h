@@ -13,7 +13,7 @@
 class Source {
 public:
 
-    Source getSource(nlohmann::json const &json) {
+    static Source getSource(nlohmann::json const &json) {
         auto source = Source(); //0 fields
         return source;
     }

@@ -37,7 +37,7 @@ public:
     int aoy;
     int keys;
 
-    Falling getFalling(nlohmann::json const &json) {
+    static Falling getFalling(nlohmann::json const &json) {
         auto falling = Falling(
                 to_bool(json["sleep"]),
                 to_bool(json["deep_sleep"]),
