@@ -16,8 +16,12 @@ public:
     std::string vs;
 
     static PointsExtra getPointsExtra(nlohmann::json const &json) {
+        try{
         auto pointsExtra = PointsExtra(to_string(json["vs"]));
         return pointsExtra;
+        }catch(std::exception & e){
+            return PointsExtra();
+        }
     }
 };
 

@@ -2550,7 +2550,7 @@ JSON_HEDLEY_DIAGNOSTIC_POP
 // allow overriding assert
 #if !defined(JSON_ASSERT)
     #include <cassert> // assert
-    #define JSON_ASSERT(x) assert(x)
+    #define JSON_ASSERT(x) if (!(x)) throw std::runtime_error("JSON assertion failed: " #x)
 #endif
 
 // allow to access some private functions (needed by the test suite)

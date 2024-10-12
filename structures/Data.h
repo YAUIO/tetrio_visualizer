@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include "../Utils.h"
+#include "Replays.h"
 #include "tEvent.h"
 #include "Board.h"
 
@@ -18,22 +19,27 @@ class Data {
 public:
     std::vector<Board> board;
     int frames;
-    std::vector<tEvent> events;
+    std::vector<Replays> replays;
+
 
     static std::vector<Data> getData(nlohmann::json const &fulljson) {
         auto data = std::vector<Data>();
+        try{
         nlohmann::json json;
         int i = 0;
         while (i < fulljson.size()) {
             json = fulljson[i];
             data.push_back(
-                    Data(Board().getBoard(json["board"]),
+                    Data(Board::getBoard(json["board"]),
                          to_int(json["frames"]),
-                         tEvent().getEvents(json["events"]))
+                         Replays::getReplays(json["replays"]))
             );
             i++;
         }
         return data;
+        }catch(std::exception & e){
+            return data;
+        }
     }
 };
 

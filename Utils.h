@@ -25,4 +25,6 @@ inline std::vector<std::string> getBag(nlohmann::json const &fulljson);
 
 inline nlohmann::json parseJson(std::string const &path);
 
+inline nlohmann::json errorHandle(nlohmann::json const & arg, std::string const & q);
+
 #endif //TETR_IO_VISULIZER_UTILS_H

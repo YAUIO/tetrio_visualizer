@@ -9,6 +9,9 @@
 #include "Data.h"
 #include <fstream>
 #include <iostream>
+#include <iostream>
+#include <exception>
+#include <nlohmann/json.hpp>
 #ifndef TETR_IO_VISULIZER_TTR_H
 #define TETR_IO_VISULIZER_TTR_H
 
@@ -28,6 +31,7 @@ public:
     std::string forcestyle;
 
     static Ttr parseTtr(std::string const &path) {
+        try{
         auto json = parseJson(path);
         auto ttr = Ttr();
 
@@ -44,6 +48,9 @@ public:
         ttr.forcestyle = to_string(json["forcestyle"]);
 
         return ttr;
+        }catch(std::exception & e){
+            return Ttr();
+        }
     }
 };
 

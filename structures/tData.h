@@ -17,6 +17,7 @@
 #include "Falling.h"
 #include <fstream>
 #include <iostream>
+#include <json.hpp>
 #ifndef TETR_IO_VISULIZER_TDATA_H
 #define TETR_IO_VISULIZER_TDATA_H
 
@@ -49,33 +50,39 @@ public:
     bool playing;
 
     static tData gettData(nlohmann::json const &json) {
-        auto tdata = tData(
-                to_int(json["id"]),
-                to_int(json["frame"]),
-                to_string(json["type"]),
-                IgeData().getIgeData(json["data"]),
-                to_int(json["cid"]),
-                to_bool(json["successful"]),
-                to_string(json["gameoverreason"]),
-                Replay::getReplay(json["replay"]),
-                Source::getSource(json["source"]),
-                Options::getOptions(json["options"]),
-                Stats::getStats(json["stats"]),
-                to_int(json["diyusi"]),
-                Enemy::getEnemy(json["enemies"]),
-                Target::getTarget(json["targets"]),
-                to_int(json["fire"]),
-                BoardV::getBoardV(json["board"]),
-                getBag(json["bag"]),
-                Hold::getHold(json["hold"]),
-                to_double(json["g"]),
-                Controlling::getControlling(json["controlling"]),
-                Falling::getFalling(json["falling"]),
-                Handling::getHandling(json["handling"]),
-                to_bool(json["playing"])
-        );
 
-        return tdata;
+        try {
+            auto tdata = tData(
+                to_int(errorHandle(json,"id")),
+                to_int(errorHandle(json,"frame")),
+                to_string(errorHandle(json,"type")),
+                IgeData::getIgeData(errorHandle(json,"data")),
+                to_int(errorHandle(json,"cid")),
+                to_bool(errorHandle(json,"successful")),
+                to_string(errorHandle(json,"gameoverreason")),
+                Replay::getReplay(errorHandle(json,"replay")),
+                Source::getSource(errorHandle(json,"source")),
+                Options::getOptions(errorHandle(json,"options")),
+                Stats::getStats(errorHandle(json,"stats")),
+                to_int(errorHandle(json,"diyusi")),
+                Enemy::getEnemy(errorHandle(json,"enemies")),
+                Target::getTarget(errorHandle(json,"targets")),
+                to_int(errorHandle(json,"fire")),
+                BoardV::getBoardV(errorHandle(json,"board")),
+                getBag(errorHandle(json,"bag")),
+                Hold::getHold(errorHandle(json,"hold")),
+                to_double(errorHandle(json,"g")),
+                Controlling::getControlling(errorHandle(json,"controlling")),
+                Falling::getFalling(errorHandle(json,"falling")),
+                Handling::getHandling(errorHandle(json,"handling")),
+                to_bool(errorHandle(json,"playing"))
+            );
+
+            return tdata;
+        } catch (std::exception & e) {
+            fmt::println("returned null at tdata");
+            return {};
+        }
     }
 };
 

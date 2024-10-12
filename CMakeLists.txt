@@ -3,6 +3,26 @@ project(TETR_IO_Visulizer)
 
 set(CMAKE_CXX_STANDARD 20)
 
+include(FetchContent)
+
+set(BUILD_SHARED_LIBS FALSE)
+
+FETCHCONTENT_DECLARE(
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML
+        GIT_TAG 2.6.1
+)
+
+FETCHCONTENT_MAKEAVAILABLE(SFML)
+
+FetchContent_Declare(
+        fmt
+        GIT_REPOSITORY https://github.com/fmtlib/fmt
+        GIT_TAG 10.2.1
+)
+
+FetchContent_MakeAvailable(fmt)
+
 include_directories(include/)
 
 include_directories(imports/)
@@ -45,4 +65,9 @@ add_executable(TETR_IO_Visulizer main.cpp
         structures/BoardV.h
         structures/ConstantsOverrides.h
         Utils.h
+        structures/Replays.h
 )
+
+target_link_libraries(TETR_IO_Visulizer sfml-graphics)
+
+target_link_libraries(TETR_IO_Visulizer fmt)

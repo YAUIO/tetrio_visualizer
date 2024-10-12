@@ -20,6 +20,7 @@ public:
     PointsExtra extra;
 
     static Points getPoints(nlohmann::json const &json) {
+        try{
         auto points = Points(
                 to_int(json["primary"]),
                 to_double(json["secondary"]),
@@ -27,6 +28,9 @@ public:
                 PointsExtra::getPointsExtra(json["extra"])
         );
         return points;
+        }catch(std::exception & e){
+            return Points();
+        }
     }
 };
 

@@ -24,6 +24,7 @@ public:
     bool softdrop;
 
     static Controlling getControlling(nlohmann::json const &json) {
+        try{
         auto controlling = Controlling(
                 to_int(json["ldas"]),
                 to_int(json["ldasiter"]),
@@ -36,6 +37,9 @@ public:
         );
 
         return controlling;
+        }catch(std::exception & e){
+            return Controlling();
+        }
     }
 };
 

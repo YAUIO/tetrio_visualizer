@@ -38,6 +38,7 @@ public:
     int keys;
 
     static Falling getFalling(nlohmann::json const &json) {
+        try{
         auto falling = Falling(
                 to_bool(json["sleep"]),
                 to_bool(json["deep_sleep"]),
@@ -63,6 +64,9 @@ public:
                 to_int(json["keys"])
         );
         return falling;
+        }catch(std::exception & e){
+            return Falling();
+        }
     }
 };
 

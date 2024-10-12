@@ -20,6 +20,7 @@ public:
     int cleared;
 
     static Garbage getGarbage(nlohmann::json const &json) {
+        try{
         auto garbage = Garbage(
                 to_int(json["sent"]),
                 to_int(json["received"]),
@@ -27,6 +28,9 @@ public:
                 to_int(json["cleared"])
         );
         return garbage;
+        }catch(std::exception & e){
+            return Garbage();
+        }
     }
 };
 

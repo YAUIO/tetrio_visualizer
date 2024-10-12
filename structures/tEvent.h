@@ -23,8 +23,9 @@ public:
     Killer killer;
     Aggregatestats aggregatestats;
 
-    std::vector<tEvent> getEvents(nlohmann::json const &fulljson) {
+    static std::vector<tEvent> getEvents(nlohmann::json const &fulljson) {
         auto events = std::vector<tEvent>();
+        try{
         nlohmann::json json;
         int i = 0;
         while (i < fulljson.size()) {
@@ -34,11 +35,14 @@ public:
                            to_string(json["type"]),
                            tData::gettData(json["data"]),
                            Killer::getKiller(json["killer"]),
-                           Aggregatestats::getAggregatestats(json["aggregatestats"]))
-            );
+                           Aggregatestats::getAggregatestats(json["aggregatestats"])
+            ));
             i++;
         }
         return events;
+        }catch(std::exception & e){
+            return events;
+        }
     }
 };
 

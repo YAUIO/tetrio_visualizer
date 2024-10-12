@@ -15,6 +15,7 @@ public:
 
     static std::vector<Enemy> getEnemy(nlohmann::json const &fulljson) {
         auto enemy = std::vector<Enemy>();
+        try{
         nlohmann::json json;
         int i = 0;
         while (i < fulljson.size()) {
@@ -23,6 +24,9 @@ public:
             i++;
         }
         return enemy;
+        }catch(std::exception & e){
+            return enemy;
+        }
     }
 };
 

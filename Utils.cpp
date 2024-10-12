@@ -45,6 +45,15 @@ inline double to_double(nlohmann::json const &json) {
     }
 }
 
+
+inline nlohmann::json errorHandle(nlohmann::json const & arg, std::string const & q) {
+    try {
+        return arg[q];
+    }catch(std::exception & e) {
+        return {};
+    }
+}
+
 inline std::vector<double> getArr(nlohmann::json const &fulljson) {
     auto arr = std::vector<double>();
     nlohmann::json json;

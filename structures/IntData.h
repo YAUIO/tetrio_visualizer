@@ -24,6 +24,7 @@ public:
     std::string username;
 
     static IntData getIntData(nlohmann::json const &json) {
+        try{
         auto intData = IntData(
                 to_int(json["iid"]),
                 to_string(json["type"]),
@@ -35,6 +36,9 @@ public:
                 to_string(json["username"])
         );
         return intData;
+        }catch(std::exception & e){
+            return IntData();
+        }
     }
 };
 

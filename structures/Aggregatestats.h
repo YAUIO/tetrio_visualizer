@@ -18,12 +18,16 @@ public:
     double vsscore;
 
     static Aggregatestats getAggregatestats(nlohmann::json const &json) {
-        auto aggregatestats = Aggregatestats(
-                to_double(json["apm"]),
-                to_double(json["ppm"]),
-                to_double(json["vsscore"])
-        );
-        return aggregatestats;
+        try{
+            auto aggregatestats = Aggregatestats(
+                    to_double(json["apm"]),
+                    to_double(json["ppm"]),
+                    to_double(json["vsscore"])
+            );
+            return aggregatestats;
+        }catch(std::exception & e){
+            return Aggregatestats();
+        }
     }
 };
 

@@ -36,6 +36,7 @@ public:
 
     static std::vector<Player> getEndcontext(nlohmann::json const &fulljson) {
         auto endcontext = std::vector<Player>();
+        try{
         nlohmann::json json;
         int i = 0;
 
@@ -61,6 +62,9 @@ public:
         }
 
         return endcontext;
+        }catch(std::exception & e){
+            return endcontext;
+        }
     }
 };
 

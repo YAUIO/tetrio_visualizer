@@ -117,6 +117,7 @@ public:
     std::string boardskin;
 
     static Options getOptions(nlohmann::json const &json) {
+        try{
         auto options = Options(
                 to_int(json["version"]),
                 to_bool(json["seed_random"]),
@@ -217,6 +218,9 @@ public:
         );
 
         return options;
+        }catch(std::exception & e){
+            return Options();
+        }
     }
 };
 

@@ -40,6 +40,7 @@ public:
     Finesse finesse;
 
     static Stats getStats(nlohmann::json const &json) {
+        try{
         auto stats = Stats(
                 to_long(json["seed"]),
                 to_int(json["lines"]),
@@ -64,6 +65,9 @@ public:
                 Finesse::getFinesse(json["finesse"])
         );
         return stats;
+        }catch(std::exception & e){
+            return Stats();
+        }
     }
 };
 

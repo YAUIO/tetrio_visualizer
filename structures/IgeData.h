@@ -27,7 +27,8 @@ public:
 
     IntData data;
 
-    IgeData getIgeData(nlohmann::json const &json) {
+    static IgeData getIgeData(nlohmann::json const &json) {
+        try{
         auto igedata = IgeData(
                 to_string(json["type"]),
                 to_string(json["gameid"]),
@@ -40,6 +41,9 @@ public:
                 IntData::getIntData(json["data"])
         );
         return igedata;
+        }catch(std::exception & e){
+            return IgeData();
+        }
     }
 };
 

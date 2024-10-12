@@ -19,7 +19,8 @@ public:
     bool active;
     bool success;
 
-    std::vector<Board> getBoard(nlohmann::json const &fulljson) {
+    static std::vector<Board> getBoard(nlohmann::json const &fulljson) {
+        try{
         auto board = std::vector<Board>();
         nlohmann::json json;
         int i = 0;
@@ -34,6 +35,9 @@ public:
             i++;
         }
         return board;
+        }catch(std::exception & e){
+            return std::vector<Board>();
+        }
     }
 };
 

@@ -24,6 +24,7 @@ public:
     std::string other;
 
     static Minoskin getMinoskin(nlohmann::json const &json) {
+        try{
         auto minoskin = Minoskin(
                 to_string(json["z"]),
                 to_string(json["l"]),
@@ -35,6 +36,9 @@ public:
                 to_string(json["other"])
         );
         return minoskin;
+        }catch(std::exception & e){
+            return Minoskin();
+        }
     }
 };
 

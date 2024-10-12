@@ -23,6 +23,7 @@ public:
     bool may20g;
 
     static Handling getHandling(nlohmann::json const &json) {
+        try{
         auto handling = Handling(
                 to_int(json["arr"]),
                 to_int(json["das"]),
@@ -33,6 +34,9 @@ public:
                 to_bool(json["may20g"])
         );
         return handling;
+        }catch(std::exception & e){
+            return Handling();
+        }
     }
 };
 

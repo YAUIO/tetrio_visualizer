@@ -32,6 +32,7 @@ public:
     int allclear;
 
     static Clears getClears(nlohmann::json const &json) {
+        try{
         auto clears = Clears(
                 to_int(json["singles"]),
                 to_int(json["doubles"]),
@@ -50,6 +51,9 @@ public:
                 to_int(json["allclear"])
         );
         return clears;
+        }catch(std::exception & e){
+            return Clears();
+        }
     }
 };
 
