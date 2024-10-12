@@ -66,6 +66,7 @@ add_executable(TETR_IO_Visulizer main.cpp
         structures/ConstantsOverrides.h
         Utils.h
         structures/Replays.h
+        structures/Game.h
 )
 
 target_link_libraries(TETR_IO_Visulizer sfml-graphics)

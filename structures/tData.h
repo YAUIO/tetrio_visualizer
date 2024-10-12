@@ -18,6 +18,9 @@
 #include <fstream>
 #include <iostream>
 #include <json.hpp>
+
+#include "Game.h"
+#include "fmt/chrono.h"
 #ifndef TETR_IO_VISULIZER_TDATA_H
 #define TETR_IO_VISULIZER_TDATA_H
 
@@ -30,6 +33,11 @@ public:
     IgeData data;
     int cid;
 
+    bool hoisted;
+
+    std::string key;
+    double subframe;
+
     bool successful;
     std::string gameoverreason;
     Replay replay;
@@ -40,42 +48,31 @@ public:
     std::vector<Enemy> enemies;
     std::vector<Target> targets;
     int fire;
-    std::vector<BoardV> board;
-    std::vector<std::string> bag;
-    Hold hold;
-    double g;
-    Controlling controlling;
-    Falling falling;
-    Handling handling;
-    bool playing;
+    Game game;
 
     static tData gettData(nlohmann::json const &json) {
 
         try {
             auto tdata = tData(
-                to_int(errorHandle(json,"id")),
-                to_int(errorHandle(json,"frame")),
-                to_string(errorHandle(json,"type")),
-                IgeData::getIgeData(errorHandle(json,"data")),
-                to_int(errorHandle(json,"cid")),
-                to_bool(errorHandle(json,"successful")),
-                to_string(errorHandle(json,"gameoverreason")),
-                Replay::getReplay(errorHandle(json,"replay")),
-                Source::getSource(errorHandle(json,"source")),
-                Options::getOptions(errorHandle(json,"options")),
-                Stats::getStats(errorHandle(json,"stats")),
-                to_int(errorHandle(json,"diyusi")),
-                Enemy::getEnemy(errorHandle(json,"enemies")),
-                Target::getTarget(errorHandle(json,"targets")),
-                to_int(errorHandle(json,"fire")),
-                BoardV::getBoardV(errorHandle(json,"board")),
-                getBag(errorHandle(json,"bag")),
-                Hold::getHold(errorHandle(json,"hold")),
-                to_double(errorHandle(json,"g")),
-                Controlling::getControlling(errorHandle(json,"controlling")),
-                Falling::getFalling(errorHandle(json,"falling")),
-                Handling::getHandling(errorHandle(json,"handling")),
-                to_bool(errorHandle(json,"playing"))
+                to_int(nullable_handle(json,"id")),
+                to_int(nullable_handle(json,"frame")),
+                to_string(nullable_handle(json,"type")),
+                IgeData::getIgeData(nullable_handle(json,"data")),
+                to_int(nullable_handle(json,"cid")),
+                to_bool(nullable_handle(json,"hoisted")),
+                to_string(nullable_handle(json,"key")),
+                to_double(nullable_handle(json,"subframe")),
+                to_bool(nullable_handle(json,"successful")),
+                to_string(nullable_handle(json,"gameoverreason")),
+                Replay::getReplay(nullable_handle(json,"replay")),
+                Source::getSource(nullable_handle(json,"source")),
+                Options::getOptions(nullable_handle(json,"options")),
+                Stats::getStats(nullable_handle(json,"stats")),
+                to_int(nullable_handle(json,"diyusi")),
+                Enemy::getEnemy(nullable_handle(json,"enemies")),
+                Target::getTarget(nullable_handle(json,"targets")),
+                to_int(nullable_handle(json,"fire")),
+                Game::getGame(nullable_handle(json,"game"))
             );
 
             return tdata;

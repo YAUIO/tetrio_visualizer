@@ -21,7 +21,6 @@ public:
 
     static std::vector<std::string> getRow(nlohmann::json const &json) {
         try {
-            fmt::println("Row reading {}", to_string(json));
             auto row = std::vector<std::string>();
             nlohmann::json ison;
             int i = 0;
@@ -36,13 +35,12 @@ public:
             }
             return row;
         } catch (std::exception &e) {
-            return std::vector<std::string>();
+            return {};
         }
     }
 
     static std::vector<BoardV> getBoardV(nlohmann::json const &fulljson) {
         try {
-            fmt::println("BoardV reading {}", to_string(fulljson));
             auto boardV = std::vector<BoardV>();
             nlohmann::json json;
             int i = 0;
@@ -53,7 +51,7 @@ public:
             }
             return boardV;
         } catch (std::exception &e) {
-            return std::vector<BoardV>();
+            return {};
         }
     }
 };

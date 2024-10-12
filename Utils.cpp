@@ -46,7 +46,7 @@ inline double to_double(nlohmann::json const &json) {
 }
 
 
-inline nlohmann::json errorHandle(nlohmann::json const & arg, std::string const & q) {
+inline nlohmann::json nullable_handle(nlohmann::json const & arg, std::string const & q) {
     try {
         return arg[q];
     }catch(std::exception & e) {
