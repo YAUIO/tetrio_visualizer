@@ -19,7 +19,7 @@ struct Replays {
             while (i < json.size()) {
                 ison = json[i];
                 replays.push_back(
-                    Replays(tEvent::getEvents(ison["events"]))
+                    Replays(tEvent::getEvents(nullable_handle(ison,"events")))
                 );
                 i++;
             }

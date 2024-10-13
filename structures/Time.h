@@ -20,17 +20,17 @@ public:
     int framoffset;
 
     static Time getTime(nlohmann::json const &json) {
-        try{
-        auto time = Time(
-                to_int(json["start"]),
-                to_bool(json["zero"]),
-                to_bool(json["locked"]),
-                to_int(json["prev"]),
-                to_int(json["framoffset"])
-        );
-        return time;
-        }catch(std::exception & e){
-            return Time();
+        try {
+            auto time = Time(
+                to_int(nullable_handle(json,"start")),
+                to_bool(nullable_handle(json,"zero")),
+                to_bool(nullable_handle(json,"locked")),
+                to_int(nullable_handle(json,"prev")),
+                to_int(nullable_handle(json,"framoffset"))
+            );
+            return time;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

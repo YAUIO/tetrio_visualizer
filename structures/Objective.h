@@ -16,11 +16,11 @@ public:
     std::string type;
 
     static Objective getObjective(nlohmann::json const &json) {
-        try{
-        auto objective = Objective(to_string(json["type"]));
-        return objective;
-        }catch(std::exception & e){
-            return Objective();
+        try {
+            auto objective = Objective(to_string(json["type"]));
+            return objective;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

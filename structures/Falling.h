@@ -38,34 +38,34 @@ public:
     int keys;
 
     static Falling getFalling(nlohmann::json const &json) {
-        try{
-        auto falling = Falling(
-                to_bool(json["sleep"]),
-                to_bool(json["deep_sleep"]),
-                to_bool(json["hibernated"]),
-                to_int(json["locking"]),
-                to_int(json["lockresets"]),
-                to_bool(json["forcelock"]),
-                to_bool(json["floored"]),
-                to_bool(json["clamped"]),
-                to_int(json["safelock"]),
-                to_int(json["x"]),
-                to_int(json["y"]),
-                to_int(json["r"]),
-                to_string(json["type"]),
-                to_int(json["highesty"]),
-                to_string(json["last"]),
-                to_int(json["lastkick"]),
-                to_string(json["lastrotation"]),
-                to_int(json["irs"]),
-                to_bool(json["ihs"]),
-                to_int(json["aox"]),
-                to_int(json["aoy"]),
-                to_int(json["keys"])
-        );
-        return falling;
-        }catch(std::exception & e){
-            return Falling();
+        try {
+            auto falling = Falling(
+                to_bool(nullable_handle(json, "sleep")),
+                to_bool(nullable_handle(json, "deep_sleep")),
+                to_bool(nullable_handle(json, "hibernated")),
+                to_int(nullable_handle(json, "locking")),
+                to_int(nullable_handle(json, "lockresets")),
+                to_bool(nullable_handle(json, "forcelock")),
+                to_bool(nullable_handle(json, "floored")),
+                to_bool(nullable_handle(json, "clamped")),
+                to_int(nullable_handle(json, "safelock")),
+                to_int(nullable_handle(json, "x")),
+                to_int(nullable_handle(json, "y")),
+                to_int(nullable_handle(json, "r")),
+                to_string(nullable_handle(json, "type")),
+                to_int(nullable_handle(json, "highesty")),
+                to_string(nullable_handle(json, "last")),
+                to_int(nullable_handle(json, "lastkick")),
+                to_string(nullable_handle(json, "lastrotation")),
+                to_int(nullable_handle(json, "irs")),
+                to_bool(nullable_handle(json, "ihs")),
+                to_int(nullable_handle(json, "aox")),
+                to_int(nullable_handle(json, "aoy")),
+                to_int(nullable_handle(json, "keys"))
+            );
+            return falling;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

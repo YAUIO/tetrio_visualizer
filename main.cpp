@@ -1,8 +1,10 @@
 #include <iostream>
-#include "Utils.h"
+#include "objects.h"
 #include "Ttr.h"
 #include <fmt/core.h>
 #include <fmt/ranges.h>
+
+#include "SFML/Graphics.hpp"
 
 int main(int argc, char* argv[]) {
     /*if (argc < 2) {
@@ -13,13 +15,24 @@ int main(int argc, char* argv[]) {
     std::string path = "/home/yudek/Documents/CLionProjects/tetrio_visualizer/test.ttrm";
     auto ttr = Ttr::parseTtr(path);
 
-    Replays data = Replays();
-    std::vector<BoardV> display = std::vector<BoardV>();
-    bool check = false;
-
     fmt::println("PARSED");
 
-    fmt::println("{}",ttr.data.size());
+    auto window = sf::RenderWindow(sf::VideoMode(1280,720), "HDPR");
+    window.setFramerateLimit(240);
+    sf::Event event;
+
+    auto a = Objects::getField(ttr);
+
+    /*while (window.isOpen()) {
+        window.clear(sf::Color::Black);
+
+        while (window.pollEvent(event)) {
+            if(event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+        window.display();
+    }*/
 
     return 0;
 }

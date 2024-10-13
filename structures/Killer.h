@@ -20,15 +20,15 @@ public:
     std::string type;
 
     static Killer getKiller(nlohmann::json const &json) {
-        try{
-        auto killer = Killer(
-                to_string(json["gameid"]),
-                to_string(json["name"]),
-                to_string(json["type"])
-        );
-        return killer;
-        }catch(std::exception & e){
-            return Killer();
+        try {
+            auto killer = Killer(
+                to_string(nullable_handle(json, "gameid")),
+                to_string(nullable_handle(json, "name")),
+                to_string(nullable_handle(json, "type"))
+            );
+            return killer;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

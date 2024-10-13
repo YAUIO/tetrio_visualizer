@@ -36,33 +36,33 @@ public:
 
     static std::vector<Player> getEndcontext(nlohmann::json const &fulljson) {
         auto endcontext = std::vector<Player>();
-        try{
-        nlohmann::json json;
-        int i = 0;
+        try {
+            nlohmann::json json;
+            int i = 0;
 
-        while (i < fulljson.size()) {
-            json = fulljson[i];
-            endcontext.push_back(
-                    Player(to_string(json["id"]),
-                           to_string(json["username"]),
-                           Handling().getHandling(json["handling"]),
-                           to_bool(json["active"]),
-                           to_bool(json["success"]),
-                           to_int(json["inputs"]),
-                           to_int(json["pieceplaced"]),
-                           to_int(json["naturalorder"]),
-                           to_int(json["score"]),
-                           to_int(json["wins"]),
-                           Points::getPoints(json["points"]),
-                           AvgTracking::getSecondaryAvgTracking(json["secondaryAvgTracking"]),
-                           AvgTracking::getTertiaryAvgTracking(json["tertiaryAvgTracking"]),
-                           ExtraAvgTracking::getExtraAvgTracking(json["extraAvgTracking"])));
+            while (i < fulljson.size()) {
+                json = fulljson[i];
+                endcontext.push_back(
+                    Player(to_string(nullable_handle(json,"id")),
+                           to_string(nullable_handle(json,"username")),
+                           Handling::getHandling(nullable_handle(json,"handling")),
+                           to_bool(nullable_handle(json,"active")),
+                           to_bool(nullable_handle(json,"success")),
+                           to_int(nullable_handle(json,"inputs")),
+                           to_int(nullable_handle(json,"pieceplaced")),
+                           to_int(nullable_handle(json,"naturalorder")),
+                           to_int(nullable_handle(json,"score")),
+                           to_int(nullable_handle(json,"wins")),
+                           Points::getPoints(nullable_handle(json,"points")),
+                           AvgTracking::getSecondaryAvgTracking(nullable_handle(json,"secondaryAvgTracking")),
+                           AvgTracking::getTertiaryAvgTracking(nullable_handle(json,"tertiaryAvgTracking")),
+                           ExtraAvgTracking::getExtraAvgTracking(nullable_handle(json,"extraAvgTracking"))));
 
-            i++;
-        }
+                i++;
+            }
 
-        return endcontext;
-        }catch(std::exception & e){
+            return endcontext;
+        } catch (std::exception &e) {
             return endcontext;
         }
     }

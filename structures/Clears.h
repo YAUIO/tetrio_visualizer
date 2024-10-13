@@ -32,27 +32,27 @@ public:
     int allclear;
 
     static Clears getClears(nlohmann::json const &json) {
-        try{
-        auto clears = Clears(
-                to_int(json["singles"]),
-                to_int(json["doubles"]),
-                to_int(json["triples"]),
-                to_int(json["quads"]),
-                to_int(json["pentas"]),
-                to_int(json["realtspins"]),
-                to_int(json["minitspins"]),
-                to_int(json["minitpinsingles"]),
-                to_int(json["tspinsingles"]),
-                to_int(json["minitspindoubles"]),
-                to_int(json["tspindoubles"]),
-                to_int(json["tspintriples"]),
-                to_int(json["tspinquads"]),
-                to_int(json["tspinpentas"]),
-                to_int(json["allclear"])
-        );
-        return clears;
-        }catch(std::exception & e){
-            return Clears();
+        try {
+            auto clears = Clears(
+                to_int(nullable_handle(json,"singles")),
+                to_int(nullable_handle(json,"doubles")),
+                to_int(nullable_handle(json,"triples")),
+                to_int(nullable_handle(json,"quads")),
+                to_int(nullable_handle(json,"pentas")),
+                to_int(nullable_handle(json,"realtspins")),
+                to_int(nullable_handle(json,"minitspins")),
+                to_int(nullable_handle(json,"minitpinsingles")),
+                to_int(nullable_handle(json,"tspinsingles")),
+                to_int(nullable_handle(json,"minitspindoubles")),
+                to_int(nullable_handle(json,"tspindoubles")),
+                to_int(nullable_handle(json,"tspintriples")),
+                to_int(nullable_handle(json,"tspinquads")),
+                to_int(nullable_handle(json,"tspinpentas")),
+                to_int(nullable_handle(json,"allclear"))
+            );
+            return clears;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

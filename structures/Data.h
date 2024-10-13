@@ -24,20 +24,20 @@ public:
 
     static std::vector<Data> getData(nlohmann::json const &fulljson) {
         auto data = std::vector<Data>();
-        try{
-        nlohmann::json json;
-        int i = 0;
-        while (i < fulljson.size()) {
-            json = fulljson[i];
-            data.push_back(
-                    Data(Board::getBoard(json["board"]),
-                         to_int(json["frames"]),
-                         Replays::getReplays(json["replays"]))
-            );
-            i++;
-        }
-        return data;
-        }catch(std::exception & e){
+        try {
+            nlohmann::json json;
+            int i = 0;
+            while (i < fulljson.size()) {
+                json = fulljson[i];
+                data.push_back(
+                    Data(Board::getBoard(nullable_handle(json, "board")),
+                         to_int(nullable_handle(json, "frames")),
+                         Replays::getReplays(nullable_handle(json, "replays")))
+                );
+                i++;
+            }
+            return data;
+        } catch (std::exception &e) {
             return data;
         }
     }

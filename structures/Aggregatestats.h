@@ -20,13 +20,13 @@ public:
     static Aggregatestats getAggregatestats(nlohmann::json const &json) {
         try{
             auto aggregatestats = Aggregatestats(
-                    to_double(json["apm"]),
-                    to_double(json["ppm"]),
-                    to_double(json["vsscore"])
+                    to_double(nullable_handle(json,"apm")),
+                    to_double(nullable_handle(json,"ppm")),
+                    to_double(nullable_handle(json,"vsscore"))
             );
             return aggregatestats;
         }catch(std::exception & e){
-            return Aggregatestats();
+            return {};
         }
     }
 };

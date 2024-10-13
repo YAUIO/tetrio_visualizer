@@ -26,18 +26,18 @@ public:
     static IntData getIntData(nlohmann::json const &json) {
         try{
         auto intData = IntData(
-                to_int(json["iid"]),
-                to_string(json["type"]),
-                to_int(json["amt"]),
-                to_int(json["ackiid"]),
-                to_int(json["x"]),
-                to_int(json["y"]),
-                to_int(json["size"]),
-                to_string(json["username"])
+                to_int(nullable_handle(json,"iid")),
+                to_string(nullable_handle(json,"type")),
+                to_int(nullable_handle(json,"amt")),
+                to_int(nullable_handle(json,"ackiid")),
+                to_int(nullable_handle(json,"x")),
+                to_int(nullable_handle(json,"y")),
+                to_int(nullable_handle(json,"size")),
+                to_string(nullable_handle(json,"username"))
         );
         return intData;
         }catch(std::exception & e){
-            return IntData();
+            return {};
         }
     }
 };

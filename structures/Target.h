@@ -13,20 +13,19 @@
 
 class Target {
 public:
-
     static std::vector<Target> getTarget(nlohmann::json const &fulljson) {
-        try{
-        auto target = std::vector<Target>();
-        nlohmann::json json;
-        int i = 0;
-        while (i < fulljson.size()) {
-            json = fulljson[i];
-            target.push_back(Target());
-            i++;
-        }
-        return target;
-        }catch(std::exception & e){
-            return std::vector<Target>();
+        try {
+            auto target = std::vector<Target>();
+            nlohmann::json json;
+            int i = 0;
+            while (i < fulljson.size()) {
+                json = fulljson[i];
+                target.push_back(Target());
+                i++;
+            }
+            return target;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

@@ -20,16 +20,16 @@ public:
     int cleared;
 
     static Garbage getGarbage(nlohmann::json const &json) {
-        try{
-        auto garbage = Garbage(
-                to_int(json["sent"]),
-                to_int(json["received"]),
-                to_int(json["attack"]),
-                to_int(json["cleared"])
-        );
-        return garbage;
-        }catch(std::exception & e){
-            return Garbage();
+        try {
+            auto garbage = Garbage(
+                to_int(nullable_handle(json,"sent")),
+                to_int(nullable_handle(json,"received")),
+                to_int(nullable_handle(json,"attack")),
+                to_int(nullable_handle(json,"cleared"))
+            );
+            return garbage;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

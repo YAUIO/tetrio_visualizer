@@ -17,10 +17,10 @@ public:
 
     static ExtraAvgTracking getExtraAvgTracking(nlohmann::json const &json) {
         try {
-            auto avgtracking = ExtraAvgTracking(getArr(json["aggregatestats___vsscore"]));
+            auto avgtracking = ExtraAvgTracking(getArr(nullable_handle(json,"aggregatestats___vsscore")));
             return avgtracking;
         } catch (nlohmann::json::exception &e) {
-            return ExtraAvgTracking();
+            return {};
         }
     }
 };

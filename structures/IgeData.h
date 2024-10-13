@@ -28,21 +28,21 @@ public:
     IntData data;
 
     static IgeData getIgeData(nlohmann::json const &json) {
-        try{
-        auto igedata = IgeData(
-                to_string(json["type"]),
-                to_string(json["gameid"]),
-                Target::getTarget(json["targets"]),
-                to_int(json["frame"]),
-                to_bool(json["value"]),
-                to_string(json["key"]),
-                to_bool(json["hoisted"]),
-                to_int(json["subframe"]),
-                IntData::getIntData(json["data"])
-        );
-        return igedata;
-        }catch(std::exception & e){
-            return IgeData();
+        try {
+            auto igedata = IgeData(
+                to_string(nullable_handle(json, "type")),
+                to_string(nullable_handle(json, "gameid")),
+                Target::getTarget(nullable_handle(json, "targets")),
+                to_int(nullable_handle(json, "frame")),
+                to_bool(nullable_handle(json, "value")),
+                to_string(nullable_handle(json, "key")),
+                to_bool(nullable_handle(json, "hoisted")),
+                to_int(nullable_handle(json, "subframe")),
+                IntData::getIntData(nullable_handle(json, "data"))
+            );
+            return igedata;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

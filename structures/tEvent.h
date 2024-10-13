@@ -25,22 +25,22 @@ public:
 
     static std::vector<tEvent> getEvents(nlohmann::json const &fulljson) {
         auto events = std::vector<tEvent>();
-        try{
-        nlohmann::json json;
-        int i = 0;
-        while (i < fulljson.size()) {
-            json = fulljson[i];
-            events.push_back(
-                    tEvent(to_int(json["frame"]),
-                           to_string(json["type"]),
-                           tData::gettData(json["data"]),
-                           Killer::getKiller(json["killer"]),
-                           Aggregatestats::getAggregatestats(json["aggregatestats"])
-            ));
-            i++;
-        }
-        return events;
-        }catch(std::exception & e){
+        try {
+            nlohmann::json json;
+            int i = 0;
+            while (i < fulljson.size()) {
+                json = fulljson[i];
+                events.push_back(
+                    tEvent(to_int(nullable_handle(json,"frame")),
+                           to_string(nullable_handle(json,"type")),
+                           tData::gettData(nullable_handle(json,"data")),
+                           Killer::getKiller(nullable_handle(json,"killer")),
+                           Aggregatestats::getAggregatestats(nullable_handle(json,"aggregatestats"))
+                    ));
+                i++;
+            }
+            return events;
+        } catch (std::exception &e) {
             return events;
         }
     }

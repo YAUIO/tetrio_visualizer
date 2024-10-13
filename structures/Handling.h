@@ -23,19 +23,19 @@ public:
     bool may20g;
 
     static Handling getHandling(nlohmann::json const &json) {
-        try{
-        auto handling = Handling(
-                to_int(json["arr"]),
-                to_int(json["das"]),
-                to_int(json["dcd"]),
-                to_int(json["sdf"]),
-                to_bool(json["safelock"]),
-                to_bool(json["cancel"]),
-                to_bool(json["may20g"])
-        );
-        return handling;
-        }catch(std::exception & e){
-            return Handling();
+        try {
+            auto handling = Handling(
+                to_int(nullable_handle(json, "arr")),
+                to_int(nullable_handle(json, "das")),
+                to_int(nullable_handle(json, "dcd")),
+                to_int(nullable_handle(json, "sdf")),
+                to_bool(nullable_handle(json, "safelock")),
+                to_bool(nullable_handle(json, "cancel")),
+                to_bool(nullable_handle(json, "may20g"))
+            );
+            return handling;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

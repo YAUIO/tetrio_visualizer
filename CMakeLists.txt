@@ -29,6 +29,8 @@ include_directories(imports/)
 
 include_directories(structures/)
 
+include_directories(SFML/)
+
 add_executable(TETR_IO_Visulizer main.cpp
         Utils.cpp
         Parse.h
@@ -67,6 +69,7 @@ add_executable(TETR_IO_Visulizer main.cpp
         Utils.h
         structures/Replays.h
         structures/Game.h
+        SFML/objects.h
 )
 
 target_link_libraries(TETR_IO_Visulizer sfml-graphics)

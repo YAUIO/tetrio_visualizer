@@ -24,21 +24,21 @@ public:
     bool softdrop;
 
     static Controlling getControlling(nlohmann::json const &json) {
-        try{
-        auto controlling = Controlling(
-                to_int(json["ldas"]),
-                to_int(json["ldasiter"]),
-                to_bool(json["lshift"]),
-                to_int(json["rdas"]),
-                to_int(json["rdasiter"]),
-                to_bool(json["rshift"]),
-                to_int(json["lastshift"]),
-                to_bool(json["softdrop"])
-        );
+        try {
+            auto controlling = Controlling(
+                to_int(nullable_handle(json,"ldas")),
+                to_int(nullable_handle(json,"ldasiter")),
+                to_bool(nullable_handle(json,"lshift")),
+                to_int(nullable_handle(json,"rdas")),
+                to_int(nullable_handle(json,"rdasiter")),
+                to_bool(nullable_handle(json,"rshift")),
+                to_int(nullable_handle(json,"lastshift")),
+                to_bool(nullable_handle(json,"softdrop"))
+            );
 
-        return controlling;
-        }catch(std::exception & e){
-            return Controlling();
+            return controlling;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

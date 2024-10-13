@@ -31,25 +31,25 @@ public:
     std::string forcestyle;
 
     static Ttr parseTtr(std::string const &path) {
-        try{
-        auto json = parseJson(path);
-        auto ttr = Ttr();
+        try {
+            auto json = parseJson(path);
+            auto ttr = Ttr();
 
-        ttr._id = to_string(json["_id"]);
-        ttr.endcontext = Player::getEndcontext(json["endcontext"]);
-        ttr.gametype = to_string(json["gametype"]);
-        ttr.ismulti = to_bool(json["isMulti"]);
-        ttr.mt = to_longlong(json["mt"]);
-        ttr.shortid = to_string(json["shortid"]);
-        ttr.ts = to_string(json["ts"]);
-        ttr.verified = to_bool(json["verified"]);
-        ttr.data = Data::getData(json["data"]);
-        ttr.back = to_string(json["back"]);
-        ttr.forcestyle = to_string(json["forcestyle"]);
+            ttr._id = to_string(nullable_handle(json, "_id"));
+            ttr.endcontext = Player::getEndcontext(nullable_handle(json, "endcontext"));
+            ttr.gametype = to_string(nullable_handle(json, "gametype"));
+            ttr.ismulti = to_bool(nullable_handle(json, "isMulti"));
+            ttr.mt = to_longlong(nullable_handle(json, "mt"));
+            ttr.shortid = to_string(nullable_handle(json, "shortid"));
+            ttr.ts = to_string(nullable_handle(json, "ts"));
+            ttr.verified = to_bool(nullable_handle(json, "verified"));
+            ttr.data = Data::getData(nullable_handle(json, "data"));
+            ttr.back = to_string(nullable_handle(json, "back"));
+            ttr.forcestyle = to_string(nullable_handle(json, "forcestyle"));
 
-        return ttr;
-        }catch(std::exception & e){
-            return Ttr();
+            return ttr;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

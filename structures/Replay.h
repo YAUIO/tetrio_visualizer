@@ -12,7 +12,6 @@
 
 class Replay {
 public:
-
     static Replay getReplay(nlohmann::json const &json) {
         auto replay = Replay(); //0 fields
         return replay;

@@ -40,33 +40,33 @@ public:
     Finesse finesse;
 
     static Stats getStats(nlohmann::json const &json) {
-        try{
-        auto stats = Stats(
-                to_long(json["seed"]),
-                to_int(json["lines"]),
-                to_int(json["level_lines"]),
-                to_int(json["level_lines_needed"]),
-                to_int(json["inputs"]),
-                to_int(json["holds"]),
-                Time::getTime(json["time"]),
-                to_int(json["score"]),
-                to_int(json["zenlevel"]),
-                to_int(json["zenprogress"]),
-                to_int(json["level"]),
-                to_int(json["combo"]),
-                to_int(json["btb"]),
-                to_int(json["topbtb"]),
-                to_int(json["currentbtbchainpower"]),
-                to_int(json["tspins"]),
-                to_int(json["piecesplaced"]),
-                Clears::getClears(json["clears"]),
-                Garbage::getGarbage(json["garbage"]),
-                to_int(json["kills"]),
-                Finesse::getFinesse(json["finesse"])
-        );
-        return stats;
-        }catch(std::exception & e){
-            return Stats();
+        try {
+            auto stats = Stats(
+                to_long(nullable_handle(json,"seed")),
+                to_int(nullable_handle(json,"lines")),
+                to_int(nullable_handle(json,"level_lines")),
+                to_int(nullable_handle(json,"level_lines_needed")),
+                to_int(nullable_handle(json,"inputs")),
+                to_int(nullable_handle(json,"holds")),
+                Time::getTime(nullable_handle(json,"time")),
+                to_int(nullable_handle(json,"score")),
+                to_int(nullable_handle(json,"zenlevel")),
+                to_int(nullable_handle(json,"zenprogress")),
+                to_int(nullable_handle(json,"level")),
+                to_int(nullable_handle(json,"combo")),
+                to_int(nullable_handle(json,"btb")),
+                to_int(nullable_handle(json,"topbtb")),
+                to_int(nullable_handle(json,"currentbtbchainpower")),
+                to_int(nullable_handle(json,"tspins")),
+                to_int(nullable_handle(json,"piecesplaced")),
+                Clears::getClears(nullable_handle(json,"clears")),
+                Garbage::getGarbage(nullable_handle(json,"garbage")),
+                to_int(nullable_handle(json,"kills")),
+                Finesse::getFinesse(nullable_handle(json,"finesse"))
+            );
+            return stats;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

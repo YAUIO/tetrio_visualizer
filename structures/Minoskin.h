@@ -24,20 +24,20 @@ public:
     std::string other;
 
     static Minoskin getMinoskin(nlohmann::json const &json) {
-        try{
-        auto minoskin = Minoskin(
-                to_string(json["z"]),
-                to_string(json["l"]),
-                to_string(json["o"]),
-                to_string(json["s"]),
-                to_string(json["i"]),
-                to_string(json["j"]),
-                to_string(json["t"]),
-                to_string(json["other"])
-        );
-        return minoskin;
-        }catch(std::exception & e){
-            return Minoskin();
+        try {
+            auto minoskin = Minoskin(
+                to_string(nullable_handle(json,"z")),
+                to_string(nullable_handle(json,"l")),
+                to_string(nullable_handle(json,"o")),
+                to_string(nullable_handle(json,"s")),
+                to_string(nullable_handle(json,"i")),
+                to_string(nullable_handle(json,"j")),
+                to_string(nullable_handle(json,"t")),
+                to_string(nullable_handle(json,"other"))
+            );
+            return minoskin;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

@@ -19,14 +19,14 @@ public:
     bool locked;
 
     static Hold getHold(nlohmann::json const &json) {
-        try{
-        auto hold = Hold(
-                to_string(json["piece"]),
-                to_bool(json["locked"])
-        );
-        return hold;
-        }catch(std::exception & e){
-            return Hold();
+        try {
+            auto hold = Hold(
+                to_string(nullable_handle(json, "piece")),
+                to_bool(nullable_handle(json, "locked"))
+            );
+            return hold;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

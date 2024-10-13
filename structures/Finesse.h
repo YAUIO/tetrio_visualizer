@@ -19,15 +19,15 @@ public:
     int perfectpieces;
 
     static Finesse getFinesse(nlohmann::json const &json) {
-        try{
-        auto finesse = Finesse(
-                to_int(json["combo"]),
-                to_int(json["faults"]),
-                to_int(json["perfectpieces"])
-        );
-        return finesse;
-        }catch(std::exception & e){
-            return Finesse();
+        try {
+            auto finesse = Finesse(
+                to_int(nullable_handle(json,"combo")),
+                to_int(nullable_handle(json,"faults")),
+                to_int(nullable_handle(json,"perfectpieces"))
+            );
+            return finesse;
+        } catch (std::exception &e) {
+            return {};
         }
     }
 };

@@ -17,19 +17,19 @@ public:
 
     static AvgTracking getSecondaryAvgTracking(nlohmann::json const &json) {
         try {
-            auto avgtracking = AvgTracking(getArr(json["secondaryAvgTracking"]));
+            auto avgtracking = AvgTracking(getArr(nullable_handle(json,"secondaryAvgTracking")));
             return avgtracking;
         } catch (nlohmann::json::exception &e) {
-            return AvgTracking();
+            return {};
         }
     }
 
     static AvgTracking getTertiaryAvgTracking(nlohmann::json const &json) {
         try {
-            auto avgtracking = AvgTracking(getArr(json["tertiaryAvgTracking"]));
+            auto avgtracking = AvgTracking(getArr(nullable_handle(json,"tertiaryAvgTracking")));
             return avgtracking;
         } catch (nlohmann::json::exception &e) {
-            return AvgTracking();
+            return {};
         }
     }
 };
